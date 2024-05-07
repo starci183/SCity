@@ -2155,7 +2155,7 @@ GameObject:
   - component: {fileID: 7356093431512622430}
   - component: {fileID: 4081731227154417619}
   - component: {fileID: 1852611270757902283}
-  - component: {fileID: 1749206799213850827}
+  - component: {fileID: -563561249437083514}
   - component: {fileID: 944576086155384477}
   - component: {fileID: 849106382423690921}
   - component: {fileID: 1491442138233575369}
@@ -2245,7 +2245,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1749206799213850827
+--- !u!114 &-563561249437083514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2257,7 +2257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2467912207
+  GlobalObjectIdHash: 3777530404
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -2294,7 +2294,7 @@ MonoBehaviour:
   GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 131328
   CinemachineCameraTarget: {fileID: 3352271431216686670}
   TopClamp: 70
   BottomClamp: -30
@@ -2375,7 +2375,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3cbca02e54b47374086e461285ba9189, type: 3}
   m_Controller: {fileID: 9100000, guid: 6a0993267f1777147a398c2d2b6425ca, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -2397,9 +2397,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b130a2ecce88d8c4d85f9f4d82e77dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPosition: {x: 267.5, y: 1, z: 267.5}
   _clientDataScriptableObject: {fileID: 11400000, guid: 057980c3ba7aec14fb316bcb9df0b697,
     type: 2}
+  _spawnPoint: {x: 512.5, y: 0.15, z: 512.5}
 --- !u!1 &8147918086695113359
 GameObject:
   m_ObjectHideFlags: 0

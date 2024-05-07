@@ -8,6 +8,8 @@ public class StartupController : SingletonPersistent<StartupController>
 {
     [SerializeField]
     private bool _isClient;
+
+    public static bool HasFinished { get; set; } = false;
     private async void Start()
     {   
         await UnityServices.InitializeAsync();
@@ -21,5 +23,7 @@ public class StartupController : SingletonPersistent<StartupController>
 
         if (_isClient) 
             LoadingSceneManagerController.Instance.LoadScene(SceneName.TitleScene);
+
+        HasFinished = true;
     }
 }

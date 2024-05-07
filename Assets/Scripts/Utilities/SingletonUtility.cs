@@ -35,7 +35,7 @@ public class SingletonPersistent<T> : MonoBehaviour where T : Component
     }
 }
 
-public class SingletonNetwork   <T> : NetworkBehaviour where T : Component
+public class SingletonNetwork<T> : NetworkBehaviour where T : Component
 {
     public static T Instance { get; private set; }
 

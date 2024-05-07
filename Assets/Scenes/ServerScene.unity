@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 1917277972}
   - component: {fileID: 1917277973}
   - component: {fileID: 1917277974}
-  - component: {fileID: 1917277975}
   m_Layer: 0
   m_Name: NetworkServer
   m_TagString: Untagged
@@ -231,7 +230,7 @@ MonoBehaviour:
     TimeResyncInterval: 30
     EnsureNetworkVariableLengthSafety: 0
     EnableSceneManagement: 0
-    ForceSamePrefabs: 0
+    ForceSamePrefabs: 1
     RecycleNetworkIds: 1
     NetworkIdRecycleDelay: 120
     RpcHashSize: 0
@@ -253,7 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293d396b5ed1324449c226934b23a659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serverDataScriptableObject: {fileID: 0}
 --- !u!114 &1917277974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,19 +281,6 @@ MonoBehaviour:
     PacketDelayMS: 0
     PacketJitterMS: 0
     PacketDropRate: 0
---- !u!114 &1917277975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917277969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 293d396b5ed1324449c226934b23a659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _serverDataScriptableObject: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

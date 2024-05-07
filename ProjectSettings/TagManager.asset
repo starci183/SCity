@@ -31,9 +31,9 @@ TagManager:
   - PlaceableFloor
   - Bullet
   - PlayerCircle
-  - 
-  - 
-  - 
+  - Minimap
+  - Main
+  - Building
   - 
   - 
   - 
