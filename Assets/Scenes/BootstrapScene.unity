@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c07b3ae96594b1499be93d870fad8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clientDataScriptableObject: {fileID: 11400000, guid: 057980c3ba7aec14fb316bcb9df0b697,
+    type: 2}
   _isClient: 1
 --- !u!1 &1116925986
 GameObject:

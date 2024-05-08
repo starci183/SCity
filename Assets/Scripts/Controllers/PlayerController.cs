@@ -16,21 +16,24 @@ public class PlayerController : NetworkBehaviour
         if (IsOwner)
         {
             _clientDataScriptableObject.isPlayerSpawned = true;
-            UpdatePositionRpc();
         }
     }
-    private Vector3 GetPlayerSpawnPosition()
+
+    private IEnumerator Start()
     {
-        return new (
-            Random.Range(_spawnPoint.x - 1, _spawnPoint.x + 1), 
-            _spawnPoint.y, 
-            Random.Range(_spawnPoint.z - 1, _spawnPoint.z + 1)
-            );
+        if (IsOwner)
+        {
+            yield return new WaitForEndOfFrame();
+            transform.position = GetPlayerSpawnPosition();
+        }
     }
 
-    [Rpc(SendTo.NotServer)]
-    private void UpdatePositionRpc()
+    private Vector3 GetPlayerSpawnPosition()
     {
-        transform.position = GetPlayerSpawnPosition();
+        return new(
+            Random.Range(_spawnPoint.x - 1, _spawnPoint.x + 1),
+            _spawnPoint.y,
+            Random.Range(_spawnPoint.z - 1, _spawnPoint.z + 1)
+            );
     }
 }

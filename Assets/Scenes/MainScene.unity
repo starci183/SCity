@@ -41203,7 +41203,7 @@ GameObject:
   - component: {fileID: 883948387}
   m_Layer: 16
   m_Name: Main Virtual Camera
-  m_TagString: Untagged
+  m_TagString: Main Virtual Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84367,7 +84367,7 @@ GameObject:
   - component: {fileID: 1777515139}
   m_Layer: 15
   m_Name: Minimap Virtual Camera
-  m_TagString: Untagged
+  m_TagString: Minimap Virtual Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
