@@ -6,7 +6,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
 
-public class StartupController : SingletonPersistent<StartupController>
+public class BootstrapStartupController : SingletonPersistent<BootstrapStartupController>
 {
     [SerializeField]
     private ClientDataScriptableObject _clientDataScriptableObject;
@@ -17,6 +17,8 @@ public class StartupController : SingletonPersistent<StartupController>
     public static bool HasFinished { get; set; } = false;
     private async void Start()
     {
+        Application.targetFrameRate = 60;
+
         await UnityServices.InitializeAsync();
 
         AuthenticationService.Instance.SignedIn += () =>
@@ -28,26 +30,15 @@ public class StartupController : SingletonPersistent<StartupController>
 
         if (_isClient)
         {
+            Debug.Log(Constants.ApiEndpoints.JOIN_CODE);
             var joinCodeDto = await HttpUtility.GetAsync<JoinCodeDto>(
-                "https://scity-frontend.vercel.app/api",
-                async (response) =>
-                {
-                    Debug.Log(response.StatusCode);
-                }
-                );
+                Constants.ApiEndpoints.JOIN_CODE
+            );
 
             var joinCode = joinCodeDto.JoinCode;
+            _clientDataScriptableObject.joinCode = joinCode;
 
-
-            if (string.IsNullOrEmpty(joinCode))
-            {
-                LoadingSceneManagerController.Instance.LoadScene(SceneName.TitleScene);
-            }
-            else
-            {
-                _clientDataScriptableObject.joinCode = joinCode;
-                LoadingSceneManagerController.Instance.LoadScene(SceneName.MainScene);
-            }
+            BootstrapLoadingSceneManagerController.Instance.LoadScene(SceneName.TitleScene);
         }
 
         HasFinished = true;

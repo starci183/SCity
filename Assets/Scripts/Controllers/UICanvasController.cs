@@ -27,7 +27,7 @@ public class UICanvasController : Singleton<UICanvasController>
         _button.onClick.AddListener(() =>
         {
             _clientDataScriptableObject.joinCode = _inputField.text;
-            LoadingSceneManagerController.Instance.LoadScene(SceneName.MainScene);
+            BootstrapLoadingSceneManagerController.Instance.LoadScene(SceneName.MainScene);
         });
     }
 }

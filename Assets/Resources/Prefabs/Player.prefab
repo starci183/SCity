@@ -2399,7 +2399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clientDataScriptableObject: {fileID: 11400000, guid: 057980c3ba7aec14fb316bcb9df0b697,
     type: 2}
-  _spawnPoint: {x: 512.5, y: 0.15, z: 512.5}
+  _spawnPoint: {x: 500, y: 0.15, z: 500}
 --- !u!1 &8147918086695113359
 GameObject:
   m_ObjectHideFlags: 0

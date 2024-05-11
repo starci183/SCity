@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 
 
-public class LoadingFadeEffectController: SingletonPersistent<LoadingFadeEffectController>
+public class BootstrapLoadingFadeEffectController: SingletonPersistent<BootstrapLoadingFadeEffectController>
 {
     [SerializeField]
     private CanvasGroup _transitionBackgroundCanvasGroup;

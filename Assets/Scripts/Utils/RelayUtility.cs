@@ -12,7 +12,7 @@ public static class RelayUtility
     public static async Task<string> CreateRelayAsync()
     {
         var allocation = await RelayService.Instance.CreateAllocationAsync(MAX_CONNECTIONS);
-        var relayServerData = new RelayServerData(allocation, "wss");
+        var relayServerData = new RelayServerData(allocation, "udp");
 
         var joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
@@ -25,7 +25,7 @@ public static class RelayUtility
         var joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
         Debug.Log(joinAllocation);
 
-        var relayServerData = new RelayServerData(joinAllocation, "wss");
+        var relayServerData = new RelayServerData(joinAllocation, "udp");
 
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(
             relayServerData

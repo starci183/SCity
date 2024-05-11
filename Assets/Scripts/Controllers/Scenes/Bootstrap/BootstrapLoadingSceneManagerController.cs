@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadingSceneManagerController : SingletonPersistent<LoadingSceneManagerController>
+public class BootstrapLoadingSceneManagerController : SingletonPersistent<BootstrapLoadingSceneManagerController>
 {
     [SerializeField]
     private ClientDataScriptableObject _clientDataScriptableObject;
@@ -30,7 +30,7 @@ public class LoadingSceneManagerController : SingletonPersistent<LoadingSceneMan
     {
 
 
-        yield return new WaitUntil(() => LoadingFadeEffectController.EndFadeOut);
+        yield return new WaitUntil(() => BootstrapLoadingFadeEffectController.EndFadeOut);
     }
 
     public void LoadScene(SceneName sceneToLoad, bool isNetworkSessionAction = false)
@@ -40,9 +40,9 @@ public class LoadingSceneManagerController : SingletonPersistent<LoadingSceneMan
 
     private IEnumerator LoadSceneCoroutine(SceneName sceneToLoad, bool isNetworkSessionActive = false)
     {
-        LoadingFadeEffectController.Instance.FadeIn();
+        BootstrapLoadingFadeEffectController.Instance.FadeIn();
 
-        yield return new WaitUntil(() => LoadingFadeEffectController.EndFadeIn);
+        yield return new WaitUntil(() => BootstrapLoadingFadeEffectController.EndFadeIn);
 
         if (isNetworkSessionActive)
         {
@@ -61,9 +61,9 @@ public class LoadingSceneManagerController : SingletonPersistent<LoadingSceneMan
             _clientDataScriptableObject.isPlayerSpawned = false;
         }
 
-        LoadingFadeEffectController.Instance.FadeOut();
+        BootstrapLoadingFadeEffectController.Instance.FadeOut();
 
-        yield return new WaitUntil(() => LoadingFadeEffectController.EndFadeOut);
+        yield return new WaitUntil(() => BootstrapLoadingFadeEffectController.EndFadeOut);
     }
 
     private void LoadSceneLocal(SceneName sceneToLoad)

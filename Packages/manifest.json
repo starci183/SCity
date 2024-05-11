@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.originbyte.suiunitysdk": "https://github.com/Origin-Byte/sui-unity-sdk.git#upm",
     "com.unity.animation.rigging": "1.2.1",
     "com.unity.burst": "1.8.13",
     "com.unity.cinemachine": "2.9.7",

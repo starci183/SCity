@@ -1,13 +1,15 @@
 
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public delegate Task HandleHttpException(HttpResponseMessage responseObject);
 public static class HttpUtility
 {
     public static async Task<TResponse> GetAsync<TResponse>(
-        string url, 
+        string url,
         HandleHttpException HandleHttpException = null
         ) where TResponse : class
     {
@@ -18,7 +20,8 @@ public static class HttpUtility
         {
             var responseContent = await responseObject.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<TResponse>(responseContent);
-        } else
+        }
+        else
         {
             if (HandleHttpException != null)
             {
@@ -50,6 +53,31 @@ public static class HttpUtility
                 await HandleHttpException(responseObject);
             }
             return null;
+        }
+    }
+
+    public static async Task PostAsync<TRequest>(
+        string url,
+        TRequest request,
+        HandleHttpException HandleHttpException = null
+        ) where TRequest : class
+    {
+        using var httpClient = new HttpClient();
+
+        var requestContent = new StringContent(
+            JsonConvert.SerializeObject(request)
+            ,Encoding.UTF8,
+            "application/json"
+        );
+        var responseObject = await httpClient.PostAsync(url, requestContent);
+
+        if (!responseObject.IsSuccessStatusCode)
+        {
+            if (HandleHttpException != null)
+            {
+                await HandleHttpException(responseObject);
+            }
+            return;
         }
     }
 }

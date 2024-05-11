@@ -6,33 +6,47 @@ using UnityEngine;
 
 public class NetworkServerController : Singleton<NetworkServerController>
 {
-    private IEnumerator Start()
+    private IEnumerator StartServerCoroutine()
     {
-        yield return new WaitUntil(() => StartupController.HasFinished);
+        yield return new WaitUntil(() => BootstrapStartupController.HasFinished);
 
         var createRelayAsync = RelayUtility.CreateRelayAsync();
         yield return new WaitUntil(() => createRelayAsync.IsCompleted);
         var joinCode = createRelayAsync.Result;
 
-        var postAsync = HttpUtility.PostAsync<JoinCodeDto, SuccessDto>(
-            joinCode,
+        var postAsync = HttpUtility.PostAsync(
+            Constants.ApiEndpoints.JOIN_CODE,
             new JoinCodeDto()
             {
                 JoinCode = joinCode
             },
-        async (response) =>
-        {
-            Debug.Log(response.StatusCode);
-        }
+            async (message) =>
+            {
+                Debug.Log(JsonConvert.SerializeObject(message));
+            }
         );
         yield return new WaitUntil(() => postAsync.IsCompleted);
 
-        Debug.Log(joinCode);
-
         NetworkManager.Singleton.StartServer();
+    }
+
+    private void StartServer()
+    {
+        StartCoroutine(StartServerCoroutine());
+    }
+
+    private void Start()
+    {
+        StartServer();
+
         NetworkManager.Singleton.OnServerStarted += () =>
         {
             Debug.Log("Server started");
+        };
+
+        NetworkManager.Singleton.OnServerStopped += obj =>
+        {
+            StartServer();
         };
     }
 }
